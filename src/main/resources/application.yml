@@ -1,0 +1,59 @@
+server:
+  port: 8765
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: ms_gateway_server
+  cloud:
+    gateway:
+      routes:
+        - id: customers
+          uri: http://localhost:8001/
+          predicates:
+            - Path=/api/customers
+        - id: customersTypes
+          uri: http://localhost:8001/
+          predicates:
+            - Path=/api/typesCustomer
+        - id: bankAccounts
+          uri: http://localhost:8002/
+          predicates:
+            - Path=/api/bankAccounts
+        - id: bankAccountsTypes
+          uri: http://localhost:8002/
+          predicates:
+            - Path=/api/bankAccountTypes
+        - id: creditProducts
+          uri: http://localhost:8003/
+          predicates:
+            - Path=/api/creditProducts
+        - id: creditProductsTypes
+          uri: http://localhost:8003/
+          predicates:
+            - Path=/api/creditProductsTypes
+        - id: creditMovements
+          uri: http://localhost:8004/
+          predicates:
+            - Path=/api/creditMovements
+        - id: creditMovementsTypes
+          uri: http://localhost:8004/
+          predicates:
+            - Path=/api/creditMovementsTypes
+        - id: bankinMovements
+          uri: http://localhost:8005/
+          predicates:
+            - Path=/api/bankingMovements
+        - id: bankingMovementTypes
+          uri: http://localhost:8005/
+          predicates:
+            - Path=/api/bankingMovementTypes
+
+
+
+
+
